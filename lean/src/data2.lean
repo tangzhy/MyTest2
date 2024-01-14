@@ -1,22 +1,21 @@
-import data.set.intervals.basic
-import data.set.pointwise.interval
-import set_theory.cardinal.basic
-import set_theory.cardinal.continuum
-import algebra.group.basic
-import algebra.order.group.defs
-import analysis.specific_limits.basic
-import data.rat.denumerable
 
-open set cardinal
+import geometry.euclidean.circumcenter
 
-lemma independent_mk_Ioo_real {a b : ℝ} (h : a < b) : #(Ioo a b) = 𝔠 :=
+open affine
+open affine_subspace
+open finset
+open simplex
+open euclidean_geometry
+open points_with_circumcenter_index
+open finite_dimensional
+
+lemma orthocentric_system.eq_insert_orthocenter_of_orthocenter_in {s : set P} (ho : orthocentric_system s)
+    {t : triangle ℝ P} (ht : t.orthocenter ∈ s) :
+  s = insert t.orthocenter (set.range t.points) :=
 begin
-  refine le_antisymm (mk_real ▸ mk_set_le _) _,
-  have h1 : #((λ x, x - a) '' Ioo a b) ≤ #(Ioo a b) := mk_image_le,
-  refine le_trans _ h1,
-  rw [image_sub_const_Ioo, sub_self],
-  replace h := sub_pos_of_lt h,
-  have h2 : #(has_inv.inv '' Ioo 0 (b - a)) ≤ #(Ioo 0 (b - a)) := mk_image_le,
-  refine le_trans _ h2,
-  rw [image_inv, inv_Ioo_0_left h, mk_Ioi_real]
+  rcases ho with ⟨t₀, ht₀o, ht₀s⟩,
+  have hs : set.range t.points ⊆ s,
+  { rw ←ht₀s,
+    exact set.range_subset_iff.mpr (λ i, t₀.points_injective (ht₀o i)) },
+  exact orthocentric_system.eq_insert_orthocenter ho ht hs
 end
