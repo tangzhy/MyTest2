@@ -1,13 +1,6 @@
 
-import data.nat.order.basic
-
-open list
-
-lemma add_nil {α : Type*} [add_group α]
-  (as : list α) : add as [] = as :=
+lemma transitivity_of_order (a b c : ℕ) (hab : a ≥ b) (hbc : b ≥ c) :
+  a ≥ c :=
 begin
-  rw [add, pointwise_nil],
-  apply eq.trans _ (map_id as),
-  congr' with x,
-  rw [add_zero, id]
+  exact ge_trans hab hbc,
 end

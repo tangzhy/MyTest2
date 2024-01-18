@@ -1,10 +1,5 @@
 
-import analysis.special_functions.trigonometric.deriv
-import analysis.special_functions.log.basic
+import data.nat.gcd
 
-open set
-open function
-open filter
-
-lemma arccosh_nonneg_iff : 0 ≤ arccosh x ↔ 1 ≤ x :=
-by rw [← cosh_le_cosh, cosh_zero, cosh_arccosh (le_trans zero_le_one hx)]
+theorem divides_trans {a b c : ℕ} (h₁ : a ∣ b) (h₂ : b ∣ c) : a ∣ c :=
+dvd_trans h₁ h₂

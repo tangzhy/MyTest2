@@ -1,16 +1,5 @@
 
-import linear_algebra.basic
+import algebra.group_power.basic
 
-open set
-open function
-
-lemma span_singleton_eq_span_singleton_iff {R M : Type*} [ring R] [add_comm_group M] [module R M]
-  {x y : M} : (R ∙ x) = (R ∙ y) ↔ ∃ (a : R), a • y = x :=
-begin
-  split,
-  { intro h,
-    rw [←set.singleton_subset_iff, ←h, submodule.singleton_span_is_compact_element] at y,
-    exact y.is_compact_element_iff.mp },
-  { rintro ⟨a, ha⟩,
-    rw [←ha, submodule.span_smul_of_singleton R a y] }
-end
+lemma power_add {M : Type*} [comm_monoid M] (a : M) (m n : ℕ) : a ^ m * a ^ n = a ^ (m + n) :=
+by rw [←pow_add, add_comm]

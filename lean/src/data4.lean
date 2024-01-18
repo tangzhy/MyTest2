@@ -1,7 +1,8 @@
 
 import data.set.basic
 
-open set
-
-theorem compl_compl {s : set α} : sᶜᶜ = s :=
-by simp [compl_eq_univ_sdiff]
+lemma subset_iff_equal_sets {α : Type*} {A B : set α} : A ⊆ B → B ⊆ A → A = B :=
+begin
+  intros h1 h2,
+  apply set.eq_of_subset_of_subset h1 h2,
+end
