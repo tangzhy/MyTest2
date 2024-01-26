@@ -1,7 +1,13 @@
 
-import data.rat.basic
+import data.real.basic
+import tactic.norm_num
 
-open rat
-
-theorem rational_sum (a b : ℚ) : ∃ (c : ℚ), a + b = c :=
-⟨a + b, rfl⟩
+lemma abs_diff_eq_sub {a b : ℝ} (h : a ≥ b) : |a - b| = a - b :=
+begin
+  have h' : a - b ≥ 0,
+  {
+    apply sub_nonneg_of_le,
+    exact h,
+  },
+  rw abs_of_nonneg h',
+end

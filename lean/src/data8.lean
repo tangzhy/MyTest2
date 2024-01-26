@@ -1,5 +1,3 @@
 
-import data.nat.gcd
-
-theorem divides_trans {a b c : ℕ} (h₁ : a ∣ b) (h₂ : b ∣ c) : a ∣ c :=
-dvd_trans h₁ h₂
+lemma bor_false (b : bool) : bor b ff = b :=
+by cases b; simp

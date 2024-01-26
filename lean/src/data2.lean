@@ -1,14 +1,5 @@
 
-import data.set.function
-import tactic.split_ifs
+import data.zmod.basic
 
-open function
-
-theorem comp_injective {A B C : Type*} (f : A → B) (g : B → C) (hf : injective f) (hg : injective g) :
-  injective (g ∘ f) :=
-begin
-  intros x y h,
-  apply hf,
-  apply hg,
-  exact h,
-end
+lemma mul_divisible (a b : ℤ) (hb : b ≠ 0) (h : a % b = 0) : a * b % b = 0 :=
+by simp [h, mul_comm]

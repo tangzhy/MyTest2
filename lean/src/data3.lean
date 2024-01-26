@@ -1,5 +1,5 @@
 
-import data.real.basic
+import data.nat.basic
 
-lemma abs_add_inequality (a b : ℝ) : abs (a + b) ≤ abs a + abs b :=
-abs_add a b
+theorem divides_eq (m n : ℕ) (h₁ : m ∣ n) (h₂ : n ∣ m) : m = n :=
+by exact nat.dvd_antisymm h₁ h₂

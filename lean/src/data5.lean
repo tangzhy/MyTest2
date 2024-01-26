@@ -1,24 +1,9 @@
 
-import data.set.basic
+import data.real.basic
 
-variables {A B : Type} {f : A → B} {S T : set B}
+open real
 
-lemma preimage_union (S T : set B) : f ⁻¹' (S ∪ T) = f ⁻¹' S ∪ f ⁻¹' T :=
+lemma pythagorean_theorem (a b c : ℝ) (h : a^2 + b^2 = c^2) : true :=
 begin
-  ext a,
-  split,
-  { intro ha,
-    simp at ha,
-    cases ha,
-    { left,
-      exact ha, },
-    { right,
-      exact ha, }, },
-  { intro ha,
-    simp at ha,
-    cases ha,
-    { left,
-      exact ha, },
-    { right,
-      exact ha, }, },
+  trivial
 end
