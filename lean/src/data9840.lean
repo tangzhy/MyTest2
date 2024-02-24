@@ -1,0 +1,6 @@
+
+import algebra.group.to_additive
+import tactic.ring
+
+theorem mul_comm_rev {α} [comm_monoid α] (a b : α) : a * b = b * a :=
+by simp [mul_comm]

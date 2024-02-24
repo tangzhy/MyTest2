@@ -1,0 +1,4 @@
+
+theorem function_equal_apply {α β : Type*} (f : α → β) {x y : α} (h : x = y) :
+  f x = f y :=
+by rw h

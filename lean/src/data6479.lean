@@ -1,0 +1,7 @@
+
+import algebra.group
+import algebra.group_power.basic
+
+lemma inv_prod_eq_prod_inv {G : Type*} [group G] (x y : G) :
+  (x * y)⁻¹ = y⁻¹ * x⁻¹ :=
+by simp
